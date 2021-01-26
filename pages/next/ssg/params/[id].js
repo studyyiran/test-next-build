@@ -7,6 +7,7 @@ const getDate = (timestamp) => {
 const TestSSG = ({timestamp, time}) => {
 
     return <div>
+        <div>vcode: 1</div>
         <div>构建时间: {timestamp}</div>
         <div>构建时间: {time}</div>
         {/*<div>当前时间: {getDate()}</div>*/}
