@@ -1,15 +1,19 @@
 import React from 'react'
 
-export default ({timestamp}) => {
-    const getDate = (timestamp) => {
-        return timestamp ? (new Date(timestamp)).toString() : (new Date()).toString()
-    }
+const getDate = (timestamp) => {
+    return timestamp ? (new Date(timestamp)).toString() : (new Date()).toString()
+}
+
+const TestSSG = ({timestamp, time}) => {
+
     return <div>
         <div>构建时间: {timestamp}</div>
-        <div>构建时间: {getDate(timestamp)}</div>
-        <div>当前时间: {getDate()}</div>
+        <div>构建时间: {time}</div>
+        {/*<div>当前时间: {getDate()}</div>*/}
     </div>
 }
+
+export default TestSSG
 
 export async function getStaticPaths() {
     const params = [1,2,3]
@@ -26,5 +30,5 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
     const timestamp = Date.now()
-    return { props: { timestamp }, revalidate: 3 }
+    return { props: { timestamp, time: getDate(timestamp) }, revalidate: 1 }
 }
